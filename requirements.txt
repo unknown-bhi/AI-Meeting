@@ -85,6 +85,7 @@ reportlab>=4.2.2
 tiktoken>=0.8.0
 
 scikit-learn>=1.5.2
+pyaudioop
 
 rich>=13.9.0
 
