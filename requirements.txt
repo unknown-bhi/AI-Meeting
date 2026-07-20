@@ -59,7 +59,7 @@ sentence-transformers>=3.0.0
 transformers>=4.45.0
 
 torch>=2.4.0
-pyaudioop
+
 faster-whisper>=1.0.3
 
 openai>=1.50.0
