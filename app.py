@@ -15,6 +15,22 @@ from main import run_pipeline   # <--- YAHAN IMPORT KARO
 
 load_dotenv()
 
+def get_key(key_name):
+    if hasattr(st, 'secrets') and key_name in st.secrets:
+        return st.secrets[key_name]
+    return os.getenv(key_name)
+
+GROQ_API_KEY = get_key("GROQ_API_KEY")
+
+# 2. Embedding Model sirf ek baar load hoga (cache mein)
+@st.cache_resource
+def load_embedding_model():
+    from chromadb.utils import embedding_functions
+    return embedding_functions.SentenceTransformerEmbeddingFunction(
+        model_name='sentence-transformers/all-MiniLM-L6-v2'
+    )
+
+embedding_fn = load_embedding_model()
 # ---------- PAGE CONFIG ----------
 st.set_page_config(
     page_title="AI Meeting Assistant",
